@@ -1,39 +1,39 @@
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-
+var randcell;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 var objects =[plant, herbivore, carnivore, stone];
 var plant ={
-	name : plant,
+	name : "plant",
 	force : 1,
 	cut :1 
 
 };
 var herbivore={
-	name : herbivorus,
+	name : "herbivorus",
 	force : 2,
 	cut: 1
 
 };
 var carnivore={
-	name : carnivorus,
+	name : "carnivorus",
 	force : 3,
 	cut:1
 
 };
 var stone={
-	name : stone,
-	force : 4
-	cut: aleat
+	name : "stone",
+	force : 4,
+	cut: 1
 
 };
 
 // app.post("/", function(req, res){
 
-	
+
 // })
 
 app.use(express.static('public'));
@@ -45,7 +45,7 @@ app.listen(3000, function(){
 function createObject (){
 	ord = MathRound(MathRandom()*20);
 	abs = MathRound(MathRandom()*20);
-
+	randcell = $("td[data-row='"+ord+"'][data-column ='"+abs+"']")
 
 
 
