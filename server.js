@@ -7,35 +7,41 @@ app.use(bodyParser.json());
 
 var objects =[plant, herbivore, carnivore, stone];
 var plant ={
-	name : "plant",
-	force : 1,
-	cut :1 
+	val: "P",
+	name: "plant",
+	force: 1,
+	cut:1 
 
 };
 var herbivore={
-	name : "herbivorus",
-	force : 2,
+	val: "H",
+	name: "herbivorus",
+	force: 2,
 	cut: 1
 
 };
 var carnivore={
-	name : "carnivorus",
+	val:"C",
+	name: "carnivorus",
 	force : 3,
 	cut:1
 
 };
 var stone={
-	name : "stone",
-	force : 4,
+	val: "S",
+	name: "stone",
+	force: 4,
 	cut: 1
 
 };
 
-// app.post("/", function(req, res){
+ app.get("/", function(req, res){
+ 	res.sendfile("public/index.html")
 
-
-// })
-
+ });
+app.post("/", function(req,res){
+	res.send(createObject)
+})
 app.use(express.static('public'));
 
 app.listen(3000, function(){
@@ -46,6 +52,9 @@ function createObject (){
 	ord = MathRound(MathRandom()*20);
 	abs = MathRound(MathRandom()*20);
 	randcell = $("td[data-row='"+ord+"'][data-column ='"+abs+"']")
+	
+	randObject= MathRound(MathRandom()*4);
+	console.log(randcell.append(objects[randObject].val))
 
 
 
