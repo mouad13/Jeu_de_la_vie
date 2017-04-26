@@ -1,3 +1,6 @@
+var ecosystem=[];
+
+//création du tableau
 for (var i = 0; i < 20; i++) {
 	$("#table").append('<tr data-row="'+i+'"></tr>');
 	for (var j = 0; j < 20; j++) {
@@ -5,28 +8,47 @@ for (var i = 0; i < 20; i++) {
 	}
 };
 
-
-
-$("#Générer").click(function(){
+//quand on clique envoi une demande au serveur
+function generate(){	
 	   $.ajax({
 	        url:'http://192.168.1.137:3000',
 	        type: "POST",
 	        data: {
-	        	test:"test",
+	        	force:"force",
 	        	color:"color",
 	        	val:"val",
 	        	X:"posX",
-	        	Y:"PosY",
+	        	Y:"posY",
 	        }
 	    })
+	   //quand le serveur repond, ce qui va etre fait 
 	    .done(function(res) {
-	    	var rustine=res.val;
-	    	$("td[data-row='"+res.posX+"'][data-column='"+res.posY+"']").append(res.val);
+	    	ecosystem.push(res)
+	    	//crush(ecosystem)
+	    	//$("td[data-row='"+res.posX+"'][data-column='"+res.posY+"']").append(res.val);
 	    	$("td[data-row='"+res.posX+"'][data-column='"+res.posY+"']").css("background-color",res.color);
-	        console.log(res.color);
+	        console.log(ecosystem);
 	        console.log(res);
 	        console.log("data-row='"+res.posX+"'")
-	        console.log(rustine);
 	    });
+}
+//timer de 500ms
+var interval;	   
+$("#Générer").click(function(){
+	interval=setInterval(generate, 500)
 });
-		
+// stopper le timer
+$("#stop").click(function(){;
+	clearInterval(interval)
+	console.log("stop")
+});
+
+
+//si l'objet tombe sur une case utilisé ecrase ce qu'il y a dedans
+
+// function crush(array){
+// for (var i =0; i < array.length; i++) {
+//  	if() 
+	
+// }
+// };
