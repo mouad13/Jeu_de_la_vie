@@ -11,6 +11,8 @@ var objects =[
 	color: "green",
 	name: "plant",
 	force: 10,
+	age: 0,
+	lifetime:100000000,
 	cut:1 
 
 },
@@ -19,6 +21,8 @@ var objects =[
 	color: "blue",
 	name: "herbivorus",
 	force: 2,
+	age: 0,
+	lifetime: 30,
 	cut: 1
 
 },
@@ -27,6 +31,8 @@ var objects =[
 	color: "red",
 	name: "carnivorus",
 	force : 3,
+	age: 0,
+	lifetime: 15,
 	cut:1
 
 },
@@ -35,6 +41,8 @@ var objects =[
 	color: "grey",
 	name: "stone",
 	force: 4,
+	age: 0,
+	lifetime: 10000000000000000000000000,
 	cut: 1
 
 }
@@ -64,6 +72,8 @@ app.post("/", function(req,res){
 	aleat= Math.round(Math.random()*3);
 	selected= objects[aleat];
 	 sended={
+	 	age: selected.age,
+	 	lifetime: selected.lifetime,
 	 	force: selected.force,
 	 	color: selected.color,
 	 	val: selected.val,
@@ -74,3 +84,9 @@ app.post("/", function(req,res){
 	res.send(sended)
 })
 
+function aging(array){
+	for (var i = 0; i < array.length; i++) {
+		array[i].age++
+		console.log(array[i].age)
+	}
+}

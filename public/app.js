@@ -14,22 +14,26 @@ function generate(){
 	        url:'http://192.168.1.137:3000',
 	        type: "POST",
 	        data: {
+	        	age: "age",
+	        	lifetime: "lifetime",
 	        	force:"force",
 	        	color:"color",
 	        	val:"val",
 	        	X:"posX",
 	        	Y:"posY",
-	        }
+	        },
 	    })
 	   //quand le serveur repond, ce qui va etre fait 
 	    .done(function(res) {
 	    	ecosystem.push(res)
-	    	//crush(ecosystem)
-	    	//$("td[data-row='"+res.posX+"'][data-column='"+res.posY+"']").append(res.val);
 	    	$("td[data-row='"+res.posX+"'][data-column='"+res.posY+"']").css("background-color",res.color);
+
+			aging(ecosystem);	        
+
+
 	        console.log(ecosystem);
-	        console.log(res);
-	        console.log("data-row='"+res.posX+"'")
+	        //console.log(res);
+	        //console.log("data-row='"+res.posX+"'")
 	    });
 }
 //timer de 500ms
@@ -42,6 +46,13 @@ $("#stop").click(function(){;
 	clearInterval(interval)
 	console.log("stop")
 });
+
+function aging(array){
+	for (var i = 0; i < array.length; i++) {
+		array[i].age
+	}
+		console.log(array[i])
+}
 
 
 //si l'objet tombe sur une case utilisé ecrase ce qu'il y a dedans
