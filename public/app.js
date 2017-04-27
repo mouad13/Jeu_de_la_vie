@@ -49,10 +49,13 @@ $("#stop").click(function(){;
 
 function aging(array){
 	for (var i = 0; i < array.length; i++) {
-		array[i].age
+		array[i].age= array[i].age+1
+		if (array[i].age==array[i].lifetime){
+			array.splice([i],1)
+		}
+		console.log(array[i].age)
 	}
-		console.log(array[i])
-}
+};
 
 
 //si l'objet tombe sur une case utilisé ecrase ce qu'il y a dedans

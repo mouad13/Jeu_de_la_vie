@@ -10,7 +10,7 @@ var objects =[
 	val: "P",
 	color: "green",
 	name: "plant",
-	force: 10,
+	force: 1,
 	age: 0,
 	lifetime:100000000,
 	cut:1 
@@ -84,9 +84,3 @@ app.post("/", function(req,res){
 	res.send(sended)
 })
 
-function aging(array){
-	for (var i = 0; i < array.length; i++) {
-		array[i].age++
-		console.log(array[i].age)
-	}
-}
